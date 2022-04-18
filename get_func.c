@@ -126,7 +126,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 		if (!length[j])
 			break;
 	}
-
+	i = 0;
 	for (j = 0; specifier[j]; j++)
 	{
 		if (string[i] == specifier[j])

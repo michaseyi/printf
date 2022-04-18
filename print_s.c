@@ -10,9 +10,17 @@
 char *print_s(va_list list,  __attribute__((unused))extract data)
 {
 	char *str = va_arg(list, char *);
-	int len = _strlen(str);
-	char *new_str = malloc(sizeof(char) * (len + 1));
+	int len;
+	char *new_str;
 
+	if (str == NULL)
+	{
+		new_str = malloc(sizeof(char) * 6);
+		_strcpy(new_str, "(null)");
+		return (new_str);
+	}
+	len = _strlen(str);
+	new_str = malloc(sizeof(char) * (len + 1));
 	new_str[len] = '\0';
 	_strcpy(new_str, str);
 	return (new_str);

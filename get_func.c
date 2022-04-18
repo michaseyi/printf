@@ -14,7 +14,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 	int precision = 0, d_type = 0;
 	char flags[] = "# -+0";
 	char length[] = "lh";
-	char specifier[] = "scxXdiobpu";
+	char specifier[] = "scxXdiobpurR";
 	bool cont_search_len = True, is_found_specifier = False;
 
 	while (True)
@@ -109,8 +109,6 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 			}
 			else if (string[i] == 'l' && length_found == 1)
 			{
-				i++;
-				length_found++;
 				cont_search_len = False;
 				break;
 			}
@@ -156,15 +154,16 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 
 fptr get_func(char *type)
 {
-funcs funcs[22] = {{"s", print_s}, {"c", print_c}, {"x", print_x},
+funcs funcs[24] = {{"s", print_s}, {"c", print_c}, {"x", print_x},
 {"hx", print_x}, {"lx", print_lx}, {"o", print_o}, {"ho", print_o},
 {"lo", print_lo}, {"d", print_d}, {"ld", print_ld}, {"hd", print_d},
 {"X", print_X}, {"lX", print_lX}, {"hX", print_x}, {"u", print_u},
 {"lu", print_lu}, {"hu", print_u}, {"i", print_d}, {"li", print_ld},
-{"hi", print_d}, {"b", print_b}, {"p", print_p}};
+{"hi", print_d}, {"b", print_b}, {"p", print_p}, {"r", print_r},
+{"R", print_R}};
 	int i = 0;
 
-	while (i < 22)
+	while (i < 24)
 	{
 		if (!_strcmp(type, funcs[i].name))
 			break;

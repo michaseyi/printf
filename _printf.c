@@ -30,6 +30,7 @@ void reset_extract(extract *data)
 int _printf(const char *format, ...)
 {
 	int i = 0, n = 0;
+
 	__attribute__((unused))char buffer[BUFF_SIZE];
 	char *current;
 	va_list args;

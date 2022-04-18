@@ -89,6 +89,8 @@ char *print_s(va_list list, extract data);
 char *print_c(va_list list, extract data);
 char *print_p(va_list list, extract data);
 char *print_b(va_list list, extract data);
+char *print_r(va_list list, extract data);
+char *print_R(va_list list, extract data);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);

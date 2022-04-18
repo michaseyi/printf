@@ -8,21 +8,43 @@
 
 .B	#include "main.h"
 
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
-\fB	
+\fB	fptr get_func(char *type);
+\fB	bool check_if_valid(const char *str, extract *data, va_list list);
+\fB	void reset_extract(extract *data);
+\fB	int _putchar(char c);
+\fB	int _printf(const char *format, ...);
+\fB	int len_num(long int number, int base);
+\fB	char *handle_prefix(char *str, char type);
+\fB	char *handle_sign(char *str, char sign);
+\fB	char *handle_space(char *str);
+\fB	char *handle_precision(char *str, int prec_len, char character);
+\fB	char *handle_left_indent(char *str, int width);
+\fB	char *fill_zeros(char *str, int width, int position);
+\fB	char *add_left_spaces(char *str, int width);
+\fB	char hex_u(int num);
+\fB	char hex_l(int num);
+\fB	char char_num(int num);
+\fB	void _print(char *str);
+\fB	char *print_d(va_list list, extract data);
+\fB	char *print_ld(va_list list, extract data);
+\fB	char *print_u(va_list list, extract data);
+\fB	char *print_lu(va_list list, extract data);
+\fB	char *print_x(va_list list, extract data);
+\fB	char *print_lx(va_list list, extract data);
+\fB	char *print_o(va_list list, extract data);
+\fB	char *print_lo(va_list list, extract data);
+\fB	char *print_X(va_list list, extract data);
+\fB	char *print_lX(va_list list, extract data);
+\fB	char *print_s(va_list list, extract data);
+\fB	char *print_c(va_list list, extract data);
+\fB	char *print_p(va_list list, extract data);
+\fB	char *print_b(va_list list, extract data);
+\fB	int _strcmp(char *s1, char *s2);
+\fB	char *_strcpy(char *dest, char *src);
+\fB	int _strlen(char *s);
+\fB	int _isdigit(int c);
+\fB	void rev_string(char *s);
+\fB	char *rot13(char *s);
 
 .SH DESCRIPTION
 
@@ -33,6 +55,9 @@
 	that specifies how subsequent arguments (or arguments accessed via the
 	variable-length argument facilities of stdarg(3)) are
        	converted for output.
+	The overall syntax of a conversion specification is:
+
+           %[$][flags][width][.precision][length modifier]conversion
 
 .SH RETURN VALUE
     	Upon successful return, this function return the number of

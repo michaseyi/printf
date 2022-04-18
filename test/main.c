@@ -1,7 +1,15 @@
+#include <limits.h>
+#include <stdio.h>
 #include "../main.h"
 
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
-	_printf("%s is a blah blah blah and  %x year old in hexadecimal\n", "Tunde",45);
-	return (0);
+    _printf("%lu ", ULONG_MAX);
+    printf("%lu", ULONG_MAX);
+    return (0);
 }

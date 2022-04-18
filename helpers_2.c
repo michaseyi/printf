@@ -23,30 +23,31 @@ int len_num(long int number, int base)
 
 char *handle_prefix(char *str, char type)
 {
-	int len = (type == 'o') ? strlen(str) + 2 : strlen(str) + 3;
+	int len = (type == 'o') ? _strlen(str) + 2 : _strlen(str) + 3;
 	char *prefix = (type == 'o') ? "0" : (type == 'x') ? "0x" : "0X";
 	char *new_str = malloc(sizeof(char) * len);
 
 	len = (type == 'o') ? 1 : 2;
-	strcpy(new_str, prefix);
-	strcpy(new_str + len, str);
+	_strcpy(new_str, prefix);
+	_strcpy(new_str + len, str);
 	free(str);
 	return (new_str);
 }
 
 /**
- * handle_sign - adds '+' in front of a string
+ * handle_sign - adds sign in front of a string
  * @str: input string
+ * @sign: sign to add
  * Return: pointer to a sting with a '+' prefix
  */
 
-char *handle_sign(char *str)
+char *handle_sign(char *str, char sign)
 {
-	int len = strlen(str) + 2;
+	int len = _strlen(str) + 2;
 	char *new_str = malloc(sizeof(char) * len);
 
-	new_str[0] = '+';
-	strcpy(new_str + 1, str);
+	new_str[0] = sign;
+	_strcpy(new_str + 1, str);
 	free(str);
 	return (new_str);
 }
@@ -59,11 +60,11 @@ char *handle_sign(char *str)
 
 char *handle_space(char *str)
 {
-	int len = strlen(str) + 2;
+	int len = _strlen(str) + 2;
 	char *new_str = malloc(sizeof(char) * len);
 
 	new_str[0] = ' ';
-	strcpy(new_str + 1, str);
+	_strcpy(new_str + 1, str);
 	free(str);
 	return (new_str);
 }
@@ -79,12 +80,12 @@ char *handle_space(char *str)
 
 char *handle_precision(char *str, int prec_len, char character)
 {
-	int to_add = prec_len - strlen(str), i;
+	int to_add = prec_len - _strlen(str), i;
 	char *new_str = malloc((prec_len + 1) * sizeof(char));
 
 	for (i = 0; i < to_add; i++)
 		new_str[i] = character;
-	strcpy(new_str + i, str);
+	_strcpy(new_str + i, str);
 	free(str);
 	return (new_str);
 }

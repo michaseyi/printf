@@ -9,12 +9,12 @@
 
 char *handle_left_indent(char *str, int width)
 {
-	int to_add = width - strlen(str), i;
+	int to_add = width - _strlen(str), i;
 	char *new_str = malloc((width + 1) * sizeof(char));
 
-	strcpy(new_str, str);
+	_strcpy(new_str, str);
 	for (i = 0; i < to_add; i++)
-		(new_str + strlen(str))[i] = ' ';
+		(new_str + _strlen(str))[i] = ' ';
 	new_str[width] = '\0';
 	free(str);
 	return (new_str);
@@ -30,14 +30,14 @@ char *handle_left_indent(char *str, int width)
 
 char *fill_zeros(char *str, int width, int position)
 {
-	int to_add = width - strlen(str), i;
+	int to_add = width - _strlen(str), i;
 	char *new_str = malloc((width + 1) * sizeof(char));
 
 	for (i = 0; i < position; i++)
 		new_str[i] = str[i];
 	for (i = 0; i < to_add; position++, i++)
 		new_str[position] = '0';
-	strcpy(new_str + position, str + (position - to_add));
+	_strcpy(new_str + position, str + (position - to_add));
 	free(str);
 	return (new_str);
 }

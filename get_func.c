@@ -11,10 +11,10 @@
 bool check_if_valid(const char *string, extract *data, va_list list)
 {
 	int i = 0, j = 0, length_found = 0, width = 0;
-	int precision = 0;
+	int precision = 0, d_type = 0;
 	char flags[] = "# -+0";
 	char length[] = "lh";
-	char specifier[] = "scxXdiobrRpuS";
+	char specifier[] = "scxXdiobpu";
 	bool cont_search_len = True, is_found_specifier = False;
 
 	while (True)
@@ -47,7 +47,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 			}
 			j++;
 		}
-		if (!flags[j] || string[i])
+		if (!flags[j])
 			break;
 	}
 
@@ -58,7 +58,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 	}
 	else
 	{
-		while (string[i] && isdigit(string[i]))
+		while (string[i] && _isdigit(string[i]))
 		{
 			width = (width * 10) + (string[i] - '0');
 			i++;
@@ -74,9 +74,9 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 			data->precision = STAR;
 			i++;
 		}
-		else if (string[i] && isdigit(string[i]))
+		else if (string[i] && _isdigit(string[i]))
 		{
-			while (string[i] && isdigit(string[i]))
+			while (string[i] && _isdigit(string[i]))
 			{
 			precision = (precision * 10) + (string[i] - '0');
 			i++;
@@ -101,6 +101,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 			}
 			else if (string[i] == 'h' && length_found == 0)
 			{
+				data->data_type[d_type++] = string[i];
 				i++;
 				length_found++;
 				cont_search_len = False;
@@ -115,6 +116,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 			}
 			else
 			{
+				data->data_type[d_type++] = string[i];
 				i++;
 				length_found++;
 				break;
@@ -129,7 +131,7 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 	{
 		if (string[i] == specifier[j])
 		{
-			data->data_type[0] = string[i];
+			data->data_type[d_type] = string[i];
 			is_found_specifier = True;
 			break;
 		}
@@ -155,13 +157,17 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 
 fptr get_func(char *type)
 {
-	funcs funcs[4] = {{"s", print_s}, {"d", print_d}, {"x", print_x},
-		{"o", print_o}};
+funcs funcs[22] = {{"s", print_s}, {"c", print_c}, {"x", print_x},
+{"hx", print_x}, {"lx", print_lx}, {"o", print_o}, {"ho", print_o},
+{"lo", print_lo}, {"d", print_d}, {"ld", print_ld}, {"hd", print_d},
+{"X", print_X}, {"lX", print_lX}, {"hX", print_x}, {"u", print_u},
+{"lu", print_lu}, {"hu", print_u}, {"i", print_d}, {"li", print_ld},
+{"hi", print_d}, {"b", print_b}, {"p", print_p}};
 	int i = 0;
 
-	while (i < 4)
+	while (i < 22)
 	{
-		if (!strcmp(type, funcs[i].name))
+		if (!_strcmp(type, funcs[i].name))
 			break;
 		i++;
 	}

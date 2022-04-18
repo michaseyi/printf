@@ -35,7 +35,7 @@ typedef struct extract
 	bool fill_zero;
 	int width;
 	int precision;
-	char data_type[2];
+	char data_type[4];
 	int bytes_read;
 } extract;
 
@@ -65,7 +65,7 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int len_num(long int number, int base);
 char *handle_prefix(char *str, char type);
-char *handle_sign(char *str);
+char *handle_sign(char *str, char sign);
 char *handle_space(char *str);
 char *handle_precision(char *str, int prec_len, char character);
 char *handle_left_indent(char *str, int width);
@@ -76,8 +76,23 @@ char hex_l(int num);
 char char_num(int num);
 void _print(char *str);
 char *print_d(va_list list, extract data);
-char *print_s(va_list list, extract data);
+char *print_ld(va_list list, extract data);
+char *print_u(va_list list, extract data);
+char *print_lu(va_list list, extract data);
 char *print_x(va_list list, extract data);
+char *print_lx(va_list list, extract data);
 char *print_o(va_list list, extract data);
-
+char *print_lo(va_list list, extract data);
+char *print_X(va_list list, extract data);
+char *print_lX(va_list list, extract data);
+char *print_s(va_list list, extract data);
+char *print_c(va_list list, extract data);
+char *print_p(va_list list, extract data);
+char *print_b(va_list list, extract data);
+int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+int _isdigit(int c);
+void rev_string(char *s);
+char *rot13(char *s);
 #endif

@@ -7,6 +7,8 @@
 
 void reset_extract(extract *data)
 {
+	int i = 0;
+
 	data->sign = False;
 	data->space = False;
 	data->prefix = False;
@@ -15,7 +17,8 @@ void reset_extract(extract *data)
 	data->precision = -1;
 	data->width = -1;
 	data->bytes_read = 0;
-	data->data_type[0] = '\0';
+	for (; i < 4; i++)
+		data->data_type[i] = '\0';
 }
 
 /**
@@ -27,14 +30,15 @@ void reset_extract(extract *data)
 int _printf(const char *format, ...)
 {
 	int i = 0, n = 0;
-	char buffer[BUFF_SIZE], *current;
+	__attribute__((unused))char buffer[BUFF_SIZE];
+	char *current;
 	va_list args;
 	fptr func;
 	extract data;
 
 	va_start(args, format);
-	if (format == NULL || !strlen(format))
-		return (0);
+	if (format == NULL)
+		return (-1);
 	reset_extract(&data);
 	while (format[i])
 	{
@@ -47,7 +51,7 @@ int _printf(const char *format, ...)
 				func = get_func(data.data_type);
 				current = func(args, data);
 				_print(current);
-				n += strlen(current);
+				n += _strlen(current);
 				free(current);
 			}
 			else if (format[i + 1] && format[i + 1] == '%')

@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * print_x - handles printing of unsigned int in lowercase hexadecimal
- * @args: argument to call to get the value
- * @data: a struct that holds info about flags, width, precision
- * Return: The string generated
+ * print_p - Handles printing address
+ * @args: list of arguments
+ * @data: a struct that holds info about how to format
+ * Return: pointer to a formated string
  */
 
-char *print_x(va_list args, extract data)
+char *print_p(va_list args, extract data)
 {
 	unsigned long int number = va_arg(args, unsigned long int);
 	int len = len_num(number, 16), position = 0;
@@ -16,8 +16,7 @@ char *print_x(va_list args, extract data)
 	str[len--] = '\0';
 	if (data.sign || data.space)
 		position++;
-	if (data.prefix)
-		position += 2;
+	position += 2;
 	while (number)
 	{
 		n = hex_l(number % 16);
@@ -25,15 +24,14 @@ char *print_x(va_list args, extract data)
 		str[len--] = n;
 	}
 
-	if (data.precision >= 0 && data.precision > (int)strlen(str))
+	if (data.precision >= 0 && data.precision > (int)_strlen(str))
 		str = handle_precision(str, data.precision, '0');
-	if (data.prefix)
-		str = handle_prefix(str, 'x');
+	str = handle_prefix(str, 'x');
 	if (data.sign)
-		str = handle_sign(str);
+		str = handle_sign(str, '+');
 	if (data.space && !data.sign)
 		str = handle_space(str);
-	if (data.width > 0 && data.width > (int)strlen(str))
+	if (data.width > 0 && data.width > (int)_strlen(str))
 	{
 		if (data.left_indent)
 			str = handle_left_indent(str, data.width);
@@ -46,3 +44,4 @@ char *print_x(va_list args, extract data)
 	}
 	return (str);
 }
+

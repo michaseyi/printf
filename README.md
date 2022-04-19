@@ -107,5 +107,5 @@ These are all the tasks of this project, the ones that are completed link to the
 ---
 
 ### Authors
-* [Michael Adewole](https://github.com/michasey)
+* [Michael Adewole](https://github.com/michaseyi)
 * [Malachy Ekene Ezema](https://github.com/ekene12e)

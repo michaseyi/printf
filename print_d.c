@@ -13,22 +13,29 @@ char *print_d(va_list list, extract data)
 	int len, position = 0;
 	char n, *str;
 
-	len = len_num(dup_num, 10);
-	str = malloc(sizeof(char) * (len + 1));
-	str[len--] = '\0';
+	if (number != 0)
+	{
+		len = len_num(dup_num, 10);
+		str = malloc(sizeof(char) * (len + 1));
+		str[len--] = '\0';
+		while (dup_num)
+		{
+			if (number < 0)
+				n = char_num(-(dup_num % 10));
+			else
+				n = char_num(dup_num % 10);
+			dup_num /= 10;
+			str[len--] = n;
+		}
+	}
+	else
+	{
+		str = malloc(sizeof(char) * 2);
+		str[0] = char_num(0);
+		str[1] = '\0';
+	}
 	if (data.sign || data.space || number < 0)
 		position++;
-	while (dup_num)
-	{
-		if (number < 0)
-			n = char_num(-(dup_num % 10));
-		else
-			n = char_num(dup_num % 10);
-		dup_num /= 10;
-		str[len--] = n;
-	}
-
-
 	if (data.precision >= 0 && data.precision > (int)_strlen(str))
 		str = handle_precision(str, data.precision, '0');
 	if (number < 0)
@@ -64,21 +71,29 @@ char *print_ld(va_list list, extract data)
 	int len, position = 0;
 	char n, *str;
 
-	len = len_num(dup_num, 10);
-	str = malloc(sizeof(char) * (len + 1));
-	str[len--] = '\0';
+	if (number != 0)
+	{
+		len = len_l(dup_num, 10);
+		str = malloc(sizeof(char) * (len + 1));
+		str[len--] = '\0';
+		while (dup_num)
+		{
+			if (number < 0)
+				n = char_num(-(dup_num % 10));
+			else
+				n = char_num(dup_num % 10);
+			dup_num /= 10;
+			str[len--] = n;
+		}
+	}
+	else
+	{
+		str = malloc(sizeof(char) * 2);
+		str[0] = char_num(0);
+		str[1] = '\0';
+	}
 	if (data.sign || data.space || number < 0)
 		position++;
-	while (dup_num)
-	{
-		if (number < 0)
-			n = char_num(-(dup_num % 10));
-		else
-			n = char_num(dup_num % 10);
-		dup_num /= 10;
-		str[len--] = n;
-	}
-
 
 	if (data.precision >= 0 && data.precision > (int)_strlen(str))
 		str = handle_precision(str, data.precision, '0');

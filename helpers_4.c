@@ -87,3 +87,16 @@ char *rot13(char *s)
 	return (ptr);
 }
 
+/**
+ * len_l - get lenght of a number in a given base
+ * @number: input number
+ * @base: base
+ * Return: length of number in the given base
+ */
+
+int len_l(unsigned long number, int base)
+{
+	if (!number)
+		return (0);
+	return (1 + len_l(number / base, base));
+}

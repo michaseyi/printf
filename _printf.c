@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 		reset_extract(&data);
 		if (format[i] == '%')
 		{
-			if (check_if_valid(format + i + 1, &data, args))
+			if (format[i + 1] && check_if_valid(format + i + 1, &data, args))
 			{
 				i += data.bytes_read + 1;
 				func = get_func(data.data_type);
@@ -60,6 +60,10 @@ int _printf(const char *format, ...)
 				_putchar(format[i]);
 				n++;
 				i += 2;
+			}
+			else if (!format[i + 1])
+			{
+				return (-1);
 			}
 			else
 			{

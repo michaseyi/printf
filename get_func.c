@@ -154,16 +154,16 @@ bool check_if_valid(const char *string, extract *data, va_list list)
 
 fptr get_func(char *type)
 {
-funcs funcs[24] = {{"s", print_s}, {"c", print_c}, {"x", print_x},
+funcs funcs[26] = {{"s", print_s}, {"c", print_c}, {"x", print_x},
 {"hx", print_x}, {"lx", print_lx}, {"o", print_o}, {"ho", print_o},
 {"lo", print_lo}, {"d", print_d}, {"ld", print_ld}, {"hd", print_d},
 {"X", print_X}, {"lX", print_lX}, {"hX", print_x}, {"u", print_u},
 {"lu", print_lu}, {"hu", print_u}, {"i", print_d}, {"li", print_ld},
 {"hi", print_d}, {"b", print_b}, {"p", print_p}, {"r", print_r},
-{"R", print_R}};
+{"R", print_R}, {"lb", print_lb}, {"hb", print_b}};
 	int i = 0;
 
-	while (i < 24)
+	while (i < 26)
 	{
 		if (!_strcmp(type, funcs[i].name))
 			break;

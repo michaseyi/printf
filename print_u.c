@@ -10,17 +10,26 @@
 char *print_u(va_list args, extract data)
 {
 	unsigned  int number = va_arg(args, unsigned int);
-	int len = len_num(number, 10), position = 0;
-	char n, *str = malloc(sizeof(char) * (len + 1));
+	int len, position = 0;
+	char n, *str;
 
-	str[len--] = '\0';
-	if (data.sign || data.space)
-		position++;
-	while (number)
+	if (number != 0)
 	{
-		n = char_num(number % 10);
-		number /= 10;
-		str[len--] = n;
+		len = len_num(number, 10);
+		str = malloc(sizeof(char) * (len + 1));
+		str[len--] = '\0';
+		while (number)
+		{
+			n = hex_l(number % 10);
+			number /= 10;
+			str[len--] = n;
+		}
+	}
+	else
+	{
+		str = malloc(sizeof(char) * 2);
+		str[0] = char_num(0);
+		str[1] = '\0';
 	}
 
 	if (data.precision >= 0 && data.precision > (int)_strlen(str))
@@ -49,17 +58,26 @@ char *print_u(va_list args, extract data)
 char *print_lu(va_list args, extract data)
 {
 	unsigned long int number = va_arg(args, unsigned long int);
-	int len = len_num(number, 10), position = 0;
-	char n, *str = malloc(sizeof(char) * (len + 1));
+	int len, position = 0;
+	char n, *str;
 
-	str[len--] = '\0';
-	if (data.sign || data.space)
-		position++;
-	while (number)
+	if (number != 0)
 	{
-		n = char_num(number % 10);
-		number /= 10;
-		str[len--] = n;
+		len = len_l(number, 10);
+		str = malloc(sizeof(char) * (len + 1));
+		str[len--] = '\0';
+		while (number)
+		{
+			n = hex_l(number % 10);
+			number /= 10;
+			str[len--] = n;
+		}
+	}
+	else
+	{
+		str = malloc(sizeof(char) * 2);
+		str[0] = char_num(0);
+		str[1] = '\0';
 	}
 
 	if (data.precision >= 0 && data.precision > (int)_strlen(str))

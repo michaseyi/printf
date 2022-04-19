@@ -23,6 +23,15 @@ char *print_s(va_list list,  __attribute__((unused))extract data)
 	new_str = malloc(sizeof(char) * (len + 1));
 	new_str[len] = '\0';
 	_strcpy(new_str, str);
+	if (data.precision >= 0 && data.precision < (int)_strlen(new_str))
+		new_str = truncate_string(new_str, data.precision);
+	if (data.width > 0 && data.width > (int)_strlen(new_str))
+	{
+		if (data.left_indent)
+			new_str = handle_left_indent(new_str, data.width);
+		else
+			new_str = add_left_spaces(new_str, data.width);
+	}
 	return (new_str);
 }
 
@@ -87,7 +96,7 @@ char *print_R(va_list list,  __attribute__((unused))extract data)
  * Return: pointer to modified string
  */
 
-char *print_c(va_list list, __attribute__((unused))extract data)
+char *print_c(va_list list, extract data)
 {
 	char character = va_arg(list, int);
 	int len = 1;
@@ -95,5 +104,28 @@ char *print_c(va_list list, __attribute__((unused))extract data)
 
 	str[len] = '\0';
 	str[0] = character;
+	if (data.width > 0 && data.width > (int)_strlen(str))
+	{
+		if (data.left_indent)
+			str = handle_left_indent(str, data.width);
+		else
+			str = add_left_spaces(str, data.width);
+	}
+	return (str);
+}
+
+/**
+ * truncate_string - truncates a string to size @prec_len
+ * @str: input string
+ * @prec_len: how long the output should be
+ * Return: pointer to a a truncated string
+ */
+
+char *truncate_string(char *str, int prec_len)
+{
+	int len = _strlen(str), i;
+
+	for (i = prec_len; i < len; i++)
+		str[i] = 0;
 	return (str);
 }

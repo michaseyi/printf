@@ -39,6 +39,6 @@ int main(void)
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
     _printf("%r %R\n", "michael", "michael");
-    _printf("%b\n", 1352);
+    _printf("%lu\n", ULONG_MAX);
     return (0);
 }

@@ -93,11 +93,11 @@ These are all the tasks of this project, the ones that are completed link to the
 ### [13. Every time that I wanted to give up, if I saw an interesting textile, print what ever, suddenly I would see a collection]
 * Handle the - flag character for non-custom conversion specifiers.
 
-### [14. Print is the sharpest and the strongest weapon of our party]
+### [14. Print is the sharpest and the strongest weapon of our party]()
 * Handle the following custom conversion specifier:
   - r : prints the reversed string
 
-### [15. The flood of print has turned reading into a process of gulping rather than savoring]
+### [15. The flood of print has turned reading into a process of gulping rather than savoring]()
 * Handle the following custom conversion specifier:
   - R : prints the rot13'ed string
 
@@ -107,5 +107,5 @@ These are all the tasks of this project, the ones that are completed link to the
 ---
 
 ### Authors
-* [Michael Adewole(https://github.com/michasey)
+* [Michael Adewole](https://github.com/michasey)
 * [Malachy Ekene Ezema](https://github.com/ekene12e)

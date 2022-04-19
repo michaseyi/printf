@@ -77,14 +77,3 @@ int print_lx(extract data, char *buffer)
     return 0;
 }
 
-
-int main(void)
-{
-    int j = 2000l;
-    char buffer[1024];
-    extract data = {1,1,1,1,1,5,6,"lx",6};
-    print_lx(data, buffer);
-    return 0;
-
-}
-

@@ -185,10 +185,3 @@ void get_func(char *string)
     else
         printf("Unmatched character %c after reading %d character(s)", string[i], i + 1);
 }
-
-int main(void)
-{
-    char *test_string = "###00040.10d";
-    get_func(test_string);
-    return 0;
-}

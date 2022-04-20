@@ -73,7 +73,7 @@ char *print_ld(va_list list, extract data)
 
 	if (number != 0)
 	{
-		len = len_l(dup_num, 10);
+		len = len_num(dup_num, 10);
 		str = malloc(sizeof(char) * (len + 1));
 		str[len--] = '\0';
 		while (dup_num)

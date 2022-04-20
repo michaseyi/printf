@@ -41,5 +41,6 @@ int main(void)
     _printf("%r %R\n", "michael", "michael");
     _printf("%lu\n", ULONG_MAX);
     _printf("%lu\n", UINT_MAX);
+    _printf("%#ld\n", -1024l);
     return (0);
 }

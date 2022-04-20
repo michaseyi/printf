@@ -30,6 +30,7 @@ char *print_o(va_list args, extract data)
 		str = malloc(sizeof(char) * 2);
 		str[0] = char_num(0);
 		str[1] = '\0';
+		return (str);
 	}
 	if (data.prefix)
 		position++;
@@ -81,6 +82,7 @@ char *print_lo(va_list args, extract data)
 		str = malloc(sizeof(char) * 2);
 		str[0] = char_num(0);
 		str[1] = '\0';
+		return (str);
 	}
 	if (data.prefix)
 		position++;

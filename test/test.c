@@ -10,7 +10,7 @@ int main(void)
 	_printf("%+d\n", INT_MIN);
 	_printf("%+d\n", INT_MAX);
 	_printf("%+ld\n", LONG_MAX);
-	_printf("%+ld\n", LONG_MIN);
+	_printf("test %+ld\n", -2112341L);
 	_printf("%+hd\n", SHRT_MAX);
 	_printf("%+hd\n", SHRT_MIN);
 	_printf("%+.20u\n", UINT_MAX);
@@ -28,6 +28,7 @@ int main(void)
 	_printf("%d\n",_printf("%s %c %+d %#x %#X %+i %#o\n", "mic", 'c', 100, 100, 100, 100, 100));	
 	printf("%d\n", printf("%-15.5s", "ttttttttt"));
 	_printf("%d\n", _printf("%-15.5s", "ttttttttt"));
+	_printf("%#x\n", 0);
 
 
 	return 0;

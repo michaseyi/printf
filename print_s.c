@@ -104,6 +104,11 @@ char *print_c(va_list list, extract data)
 
 	str[len] = '\0';
 	str[0] = character;
+	if (character == 0)
+	{
+		free(str);
+		exit(1);
+	}
 	if (data.width > 0 && data.width > (int)_strlen(str))
 	{
 		if (data.left_indent)

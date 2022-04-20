@@ -27,9 +27,9 @@ char *print_p(va_list args, extract data)
 	}
 	else
 	{
-		str = malloc(sizeof(char) * 2);
-		str[0] = char_num(0);
-		str[1] = '\0';
+		str = malloc(sizeof(char) * 5);
+		_strcpy(str, "(nil)");
+		return (str);
 	}
 	if (data.sign || data.space)
 		position++;
